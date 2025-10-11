@@ -9,11 +9,14 @@ print(df.tail(10))
 print(df.info())
 print(df.shape)
 
-#remove rows with negative premiums
-df = df[df['OOPPREMX'] >= 0]
+# remove rows with negative premiums
+df = df[df['OOPPREMX'] >= 0] # change to oopx12x for full year
 
 # remove duplicate rows
 df.drop_duplicates(subset=['DUPERSID'], inplace=True)
+
+# rename columns
+df.rename(columns={'OOPPREMX' : 'MONTHLY_PREMIUM'})
 
 # inspect dataframe
 print(df.head(10))
